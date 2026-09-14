@@ -1,0 +1,12 @@
+{
+  "name": "opencode-tuicr",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./tui.ts",
+    "./tui": "./tui.ts"
+  },
+  "dependencies": {
+    "@opencode/plugin": "0.0.0-beta-19425"
+  }
+}

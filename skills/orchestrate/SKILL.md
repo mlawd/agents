@@ -11,7 +11,13 @@ Use this skill when a user requests a change or to plan some work.
 
 **Never** supply an agent with max turns, this could cut off valuable exploration, verification or review findings.
 
-When launching multiple sub agents, ensure all are completed before synethsising responses and presenting findings/questions to the user.
+**Never** run verification (tests, lint, build, formatting etc.) within the main agent, always use a wayfinder agent.
+
+**Always** ensure all agents are completed before synethsising responses and presenting findings/questions to the user.
+
+**Never** present questions or findings whilst agents are still running.
+
+**Always** prefer codebase-memory mcp for tracing the codebase and code usage.
 
 ## 1. Exploration
 
@@ -21,7 +27,7 @@ Give each wayfinder agent a scope of what to find and an expected output so that
 
 ## 2. Context gathering
 
-Once you have sufficent context from the source code, yse the brainstorm skill to gather as much context about the change requirements as necessary. 
+Once you have sufficent context from the source code, use the brainstorm skill to gather as much context about the change requirements as necessary.
 
 Continue until you have a shared understanding of what is required with the user.
 
@@ -42,6 +48,8 @@ Once the plan is approved, implement the plan.
 Keep code changes small and simple, do not alter unaffected areas with regards to style.
 
 Do not overengineer.
+
+Do not introduce scope-creep.
 
 ## 5. Verify
 
@@ -95,10 +103,6 @@ FINDINGS:
 `CLEAN` means no actionable correctness, security, or maintainability findings
 remain. Stylistic preferences alone are not failures.
 
-Treat findings outside the approved impact scope as optional follow-up items rather than
-blockers unless the change introduces or materially worsens a correctness or
-security issue there.
-
 Maintain a failed-review counter starting at zero:
 
 1. On `CLEAN`, finish.
@@ -114,6 +118,9 @@ Maintain a failed-review counter starting at zero:
 
 Do not request user approval between ordinary fix, validation, and re-review
 rounds. They are part of the approved workflow.
+
+Seek user approval before implementing any finding that is beyond the approved scope or could introduce scope creep.
+If you're unsure, err on the side of requesting approval.
 
 Upon completing a fix from a review finding, repeating steps 5 & 6 (verification and review) until everything reports "clean".
 
