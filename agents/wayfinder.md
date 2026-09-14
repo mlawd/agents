@@ -1,7 +1,6 @@
 ---
 name: wayfinder
 description: Fast exploration and information gathering. Used for finding files, code patterns, answering 'where is X?' questions and running verification
-model: openai/gpt-5.6-luna
 mode: subagent
 permission:
   edit: deny

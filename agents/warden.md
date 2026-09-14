@@ -1,7 +1,6 @@
 ---
 name: warden
 description: Senior IC to be used as a technical advisor for architectural decisions, complex debugging, code review, simplification and engineering guidance
-model: openai/gpt-5.6-sol
 mode: subagent
 permission:
   edit: deny
