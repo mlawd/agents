@@ -37,10 +37,14 @@ and the user has confirmed it or corrected it.
 ## Question Rules
 
 - Ask AT MOST two questions per round unless the user requests otherwise.
+- Emit one question block per response. Never repeat the same round in alternate
+  wording within a single response.
 - Make each question multiple-choice whenever possible.
 - Include an `Other:` option when the likely answers may not fit.
 - Keep options short and clearly distinct.
 - Do not bundle unrelated topics into one question.
+- If another workflow invokes this skill while brainstorming is already active,
+  continue the active round instead of restarting it.
 - Ask follow-up questions when answers expose ambiguity, risk, disagreement, or
   hidden constraints.
 - Stop asking only when you can accurately summarize what needs doing.

@@ -13,11 +13,11 @@ Use this skill when a user requests a change or to plan some work.
 
 **Never** run verification (tests, lint, build, formatting etc.) within the main agent, always use a wayfinder agent.
 
-**Always** ensure all agents are completed before synethsising responses and presenting findings/questions to the user.
+**Always** ensure all agents are completed before synthesising responses and presenting findings/questions to the user.
 
 **Never** present questions or findings whilst agents are still running.
 
-**Always** prefer codebase-memory mcp for tracing the codebase and code usage.
+**Always** prefer the codebase-memory MCP for tracing the codebase and code usage when it is configured. If it is unavailable, use the available read-only filesystem and search tools.
 
 ## 1. Exploration
 
@@ -27,11 +27,16 @@ Give each wayfinder agent a scope of what to find and an expected output so that
 
 ## 2. Context gathering
 
-Once you have sufficent context from the source code, use the brainstorm skill to gather as much context about the change requirements as necessary.
+Once you have sufficient context from the source code, continue the active
+brainstorm to gather any remaining context about the change requirements. If no
+brainstorm is active, use the brainstorm skill once. Never restart an active
+brainstorm or repeat its questions just because this workflow reaches this step.
 
 Continue until you have a shared understanding of what is required with the user.
 
 If you require to re-examine any part of the codebase, re-launch wayfinder agents.
+
+Do not repeat the shared understanding if it has been presented by the brainstorm skill.
 
 Before proceeding, ensure the user has confirmed the shared understanding.
 
@@ -63,7 +68,7 @@ If the verification commands succeed:
 Status: PASS
 ```
 
-If the verification commands fails, then a summary of the failures should be presented:
+If the verification commands fail, then a summary of the failures should be presented:
 
 ```
 Status: FAIL
@@ -122,7 +127,7 @@ rounds. They are part of the approved workflow.
 Seek user approval before implementing any finding that is beyond the approved scope or could introduce scope creep.
 If you're unsure, err on the side of requesting approval.
 
-Upon completing a fix from a review finding, repeating steps 5 & 6 (verification and review) until everything reports "clean".
+Upon completing a fix from a review finding, repeat steps 5 and 6 (verification and review) until everything reports "clean".
 
 ## Completion
 
